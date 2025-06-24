@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import logging
 
+projectName='CustomerFeedbackAnayser'
 file_dir = 'src'
 
  
@@ -23,7 +24,7 @@ file_list = [
     "main.py",
     "Dockerfile",
     "requirements.txt",
-    "research/"
+    f"research/{projectName}.ipynb"
 ]
 
 try:
@@ -32,8 +33,8 @@ try:
         filedir , filename = os.path.split(filepath)
         if filedir != '':
             os.makedirs(filedir,exist_ok=True)
-        if (not os.path.exists(filepath) or (os.path.getsize==0)):
+        if (not os.path.exists(filepath) or (os.path.getsize(filepath)==0)):
             with open(filepath,'w') as f:
                 pass
 except Exception as e:
-    logging.DEBUG('Error occured while creating files',e)
+    logging.DEBUG('Error occured while creating files : {e}')
